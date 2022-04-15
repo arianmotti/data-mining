@@ -57,26 +57,27 @@ setosa = []
 versicolor = []
 virginica = []
 for i in range(len(data)):
-    if df.iloc[i]['target'] == 0:
-        setosa.append(data[i])
+    if df.iloc[i]['target'] == 2:
+        virginica.append(data[i])
+
     elif df.iloc[i]['target'] == 1:
         versicolor.append(data[i])
     else:
-        virginica.append(data[i])
+        setosa.append(data[i])
 
 
-def plot(arr1, arr2, arr3,tmp):
-    plt.scatter([i[0] for i in setosa], [i[1] for i in arr1])
-    plt.scatter([i[0] for i in versicolor], [i[1] for i in arr2])
-    plt.scatter([i[0] for i in virginica], [i[1] for i in arr3])
+def plot(arr1, arr2, arr3, tmp):
+    plt.scatter([i[0] for i in setosa], [i[1] for i in arr1],color='blue')
+    plt.scatter([i[0] for i in versicolor], [i[1] for i in arr2],color='green')
+    plt.scatter([i[0] for i in virginica], [i[1] for i in arr3],color='yellow')
     plt.legend(["setosa", "versicolor", "virginica"])
     plt.show()
     visual_data = copy.deepcopy(tmp)
     del visual_data['target']
-    fig = plt.figure(figsize=(6, 4))
+    fig = plt.figure(figsize=(10, 10))
     ax = fig.add_axes([0, 0, 1, 1])
     ax.boxplot(visual_data)
     plt.show()
 
 
-plot(setosa, versicolor, virginica,df)
+plot(setosa, versicolor, virginica, df)
