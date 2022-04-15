@@ -65,19 +65,18 @@ for i in range(len(data)):
         virginica.append(data[i])
 
 
-def plot(arr1, arr2, arr3):
+def plot(arr1, arr2, arr3,tmp):
     plt.scatter([i[0] for i in setosa], [i[1] for i in arr1])
     plt.scatter([i[0] for i in versicolor], [i[1] for i in arr2])
     plt.scatter([i[0] for i in virginica], [i[1] for i in arr3])
     plt.legend(["setosa", "versicolor", "virginica"])
     plt.show()
-
-    visual_data = copy.deepcopy(df)
+    visual_data = copy.deepcopy(tmp)
     del visual_data['target']
     fig = plt.figure(figsize=(6, 4))
     ax = fig.add_axes([0, 0, 1, 1])
-    bp = ax.boxplot(visual_data)
+    ax.boxplot(visual_data)
     plt.show()
 
 
-plot(setosa, versicolor, virginica)
+plot(setosa, versicolor, virginica,df)
